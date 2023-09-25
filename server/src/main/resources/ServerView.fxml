@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.dep11.ServerViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.ServerViewController">
+   <children>
+      <VBox layoutX="317.0" layoutY="75.0" prefHeight="209.0" prefWidth="194.0">
+         <children>
+            <Label prefHeight="35.0" prefWidth="194.0" text="Custromer Id :" />
+            <TextField />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="194.0" text="Costomer name : " />
+            <TextField layoutX="10.0" layoutY="45.0" />
+            <Label layoutX="10.0" layoutY="69.0" prefHeight="35.0" prefWidth="194.0" text="Costomer contact no :" />
+            <TextField layoutX="10.0" layoutY="104.0" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" style="-fx-background-color: lightgreen;" text="Button">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <TableView layoutX="38.0" layoutY="80.0" prefHeight="200.0" prefWidth="233.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="75.0" text="Name" />
+            <TableColumn prefWidth="75.0" text="Status" />
+        </columns>
+      </TableView>
+      <VBox layoutX="38.0" layoutY="304.0" prefHeight="115.0" prefWidth="488.0">
+         <children>
+            <HBox prefHeight="44.0" prefWidth="478.0" spacing="60.0">
+               <children>
+                  <Label text="Iteam 1" />
+                  <Label layoutX="10.0" layoutY="10.0" text="Iteam 1" />
+                  <Label layoutX="60.0" layoutY="10.0" text="Iteam 1" />
+                  <Label layoutX="110.0" layoutY="10.0" text="Iteam 1" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="51.0" prefWidth="488.0" spacing="5.0">
+               <children>
+                  <Spinner prefHeight="24.0" prefWidth="107.0" />
+                  <Spinner layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="107.0" />
+                  <Spinner layoutX="117.0" layoutY="10.0" prefHeight="24.0" prefWidth="107.0" />
+                  <Spinner layoutX="224.0" layoutY="10.0" prefHeight="24.0" prefWidth="107.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
