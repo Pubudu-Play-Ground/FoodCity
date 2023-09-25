@@ -11,18 +11,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.ClientViewController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.ClientViewController">
    <children>
       <VBox layoutX="317.0" layoutY="75.0" prefHeight="209.0" prefWidth="194.0">
          <children>
             <Label prefHeight="35.0" prefWidth="194.0" text="Custromer Id :" />
-            <TextField />
+            <TextField fx:id="txtId" />
             <Label layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="194.0" text="Costomer name : " />
-            <TextField layoutX="10.0" layoutY="45.0" />
+            <TextField fx:id="txtName" layoutX="10.0" layoutY="45.0" />
             <Label layoutX="10.0" layoutY="69.0" prefHeight="35.0" prefWidth="194.0" text="Costomer contact no :" />
-            <TextField layoutX="10.0" layoutY="104.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" style="-fx-background-color: lightgreen;" text="Button">
+            <TextField fx:id="txtContact" layoutX="10.0" layoutY="104.0" />
+            <Button fx:id="btnSubmit" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnSubmitOnAction" prefHeight="24.0" prefWidth="81.0" style="-fx-background-color: lightgreen;" text="Submit">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
@@ -32,7 +31,7 @@
             </Button>
          </children>
       </VBox>
-      <TableView layoutX="38.0" layoutY="80.0" prefHeight="200.0" prefWidth="233.0">
+      <TableView fx:id="tblClient" layoutX="38.0" layoutY="80.0" prefHeight="200.0" prefWidth="233.0">
         <columns>
           <TableColumn prefWidth="75.0" text="ID" />
           <TableColumn prefWidth="75.0" text="Name" />
@@ -57,10 +56,10 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefHeight="51.0" prefWidth="488.0" spacing="5.0">
                <children>
-                  <Spinner prefHeight="24.0" prefWidth="107.0" />
-                  <Spinner layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="107.0" />
-                  <Spinner layoutX="117.0" layoutY="10.0" prefHeight="24.0" prefWidth="107.0" />
-                  <Spinner layoutX="224.0" layoutY="10.0" prefHeight="24.0" prefWidth="107.0" />
+                  <Spinner fx:id="spn1" prefHeight="24.0" prefWidth="107.0" />
+                  <Spinner fx:id="spn2" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="107.0" />
+                  <Spinner fx:id="spn3" layoutX="117.0" layoutY="10.0" prefHeight="24.0" prefWidth="107.0" />
+                  <Spinner fx:id="spn4" layoutX="224.0" layoutY="10.0" prefHeight="24.0" prefWidth="107.0" />
                </children>
             </HBox>
          </children>
