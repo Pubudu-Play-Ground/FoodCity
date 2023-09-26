@@ -1,5 +1,6 @@
 package lk.ijse.dep11;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,10 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dep11.tm.Customer;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +30,7 @@ public class ClientViewController {
     public Button btnNew;
     public ComboBox <String> cmbFoodItem;
     public Spinner <Integer> spnValue;
+    public Socket socket ;
 
 
     public void initialize(){
@@ -53,6 +52,26 @@ public class ClientViewController {
         tblClient.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
         tblClient.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("status"));
         txtId.setText(setupId());
+
+        new Thread(()->{
+            try {
+                // Establish a socket connection to the server
+                socket = new Socket("192.168.90.65", 5055); // Replace with the server's IP address
+
+                InputStream is = socket.getInputStream();
+                BufferedInputStream bis = new BufferedInputStream(is);
+                ObjectInputStream inputStream = new ObjectInputStream(bis);
+
+                Customer updateCustomer = (Customer )inputStream.readObject();
+                System.out.println(updateCustomer);
+                updateCustomer(updateCustomer);
+
+
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
 
 
     }
@@ -79,24 +98,28 @@ public class ClientViewController {
         btnNew.fire();
 
         try {
-            // Establish a socket connection to the server
-            Socket socket = new Socket("192.168.90.65", 5050); // Replace with the server's IP address
-
-            // Create an ObjectOutputStream to send the customer object to the server
             OutputStream os = socket.getOutputStream();
             BufferedOutputStream bos = new BufferedOutputStream(os);
             ObjectOutputStream outputStream = new ObjectOutputStream(bos);
 
-            // Send the customer object to the server
             outputStream.writeObject(C1);
             outputStream.flush();
 
-            // Close the socket
-            socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    private void updateCustomer(Customer updateCustomer) {
+        List<Customer> customerlist = getCustomer();
+        for(Customer customer: customerlist){
+            if(customer.getId().equals(updateCustomer.getId())){
+                customer.setStatus(updateCustomer.getStatus());
+            }
+        }
+        tblClient.refresh();
+    }
+
     public boolean validate(){
         if(!txtName.getText().strip().matches("[A-Za-z ]+")){
             txtName.selectAll();
