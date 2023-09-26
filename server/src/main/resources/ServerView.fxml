@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.dep11.ServerViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.ServerViewController">
+   <children>
+      <Label layoutX="263.0" layoutY="23.0" text="Server Side" />
+      <TableView fx:id="tblServer" layoutX="33.0" layoutY="76.0" prefHeight="200.0" prefWidth="503.0">
+        <columns>
+          <TableColumn prefWidth="128.0" text="ID" />
+          <TableColumn prefWidth="154.0" text="Food Item" />
+            <TableColumn prefWidth="207.0" text="Qty" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnProcessing" layoutX="103.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnProcessingOnAction" text="Processing" />
+      <Button fx:id="btnCompleted" layoutX="338.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnCompletedOnAction" text="Completed" />
+   </children>
 </AnchorPane>
